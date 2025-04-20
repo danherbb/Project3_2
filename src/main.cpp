@@ -7,7 +7,7 @@ int main() {
     cout << getHello() << endl;
     cout << endl;
 
-    cout << readFileToString("../data/control1.txt") << endl;
+    cout << readFileToString("../data/scientific1.txt") << endl;
 
     return 0;
 }
