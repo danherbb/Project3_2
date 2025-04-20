@@ -49,11 +49,23 @@ cmake_ninja_workdir = /Users/daniel/CLionProjects/COP3530/Project3_2/cmake-build
 
 build cmake_object_order_depends_target_Project3_2: phony || CMakeFiles/Project3_2.dir
 
-build CMakeFiles/Project3_2.dir/main.cpp.o: CXX_COMPILER__Project3_2_unscanned_Debug /Users/daniel/CLionProjects/COP3530/Project3_2/main.cpp || cmake_object_order_depends_target_Project3_2
-  DEP_FILE = CMakeFiles/Project3_2.dir/main.cpp.o.d
+build CMakeFiles/Project3_2.dir/src/main.cpp.o: CXX_COMPILER__Project3_2_unscanned_Debug /Users/daniel/CLionProjects/COP3530/Project3_2/src/main.cpp || cmake_object_order_depends_target_Project3_2
+  DEP_FILE = CMakeFiles/Project3_2.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/Project3_2.dir
-  OBJECT_FILE_DIR = CMakeFiles/Project3_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project3_2.dir/src
+
+build CMakeFiles/Project3_2.dir/src/lzw.cpp.o: CXX_COMPILER__Project3_2_unscanned_Debug /Users/daniel/CLionProjects/COP3530/Project3_2/src/lzw.cpp || cmake_object_order_depends_target_Project3_2
+  DEP_FILE = CMakeFiles/Project3_2.dir/src/lzw.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Project3_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project3_2.dir/src
+
+build CMakeFiles/Project3_2.dir/src/huffman.cpp.o: CXX_COMPILER__Project3_2_unscanned_Debug /Users/daniel/CLionProjects/COP3530/Project3_2/src/huffman.cpp || cmake_object_order_depends_target_Project3_2
+  DEP_FILE = CMakeFiles/Project3_2.dir/src/huffman.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Project3_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Project3_2.dir/src
 
 
 # =============================================================================
@@ -63,7 +75,7 @@ build CMakeFiles/Project3_2.dir/main.cpp.o: CXX_COMPILER__Project3_2_unscanned_D
 #############################################
 # Link the executable Project3_2
 
-build Project3_2: CXX_EXECUTABLE_LINKER__Project3_2_Debug CMakeFiles/Project3_2.dir/main.cpp.o
+build Project3_2: CXX_EXECUTABLE_LINKER__Project3_2_Debug CMakeFiles/Project3_2.dir/src/main.cpp.o CMakeFiles/Project3_2.dir/src/lzw.cpp.o CMakeFiles/Project3_2.dir/src/huffman.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
   OBJECT_DIR = CMakeFiles/Project3_2.dir
   POST_BUILD = :
