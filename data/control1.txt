@@ -1,0 +1,4 @@
+Test text
+to read string from file
+
+...

@@ -5,4 +5,9 @@
 #ifndef PROJECT3_2_LZW_H
 #define PROJECT3_2_LZW_H
 
+#include <string>
+using namespace std;
+
+string readFileToString(const string& filePath);
+
 #endif //PROJECT3_2_LZW_H
