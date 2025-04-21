@@ -16,6 +16,23 @@ string readFileToString(const string& filePath) {
     return buffer.str();
 }
 
+void processFileHuffman(const string& filePath) {
+    try {
+        string text = readFileToString(filePath);
+        cout << "Huffman Encoding: " << endl;
+        cout << "Original size: " << text.size() * 8 << " bits\n";
+
+        string huffmanEncodedString = huffmanEncode(text);
+        double huffmanRatioString = huffmanCompRatio(text, huffmanEncodedString);
+        cout << "Compressed size: " << huffmanEncodedString.size() << " bits\n";
+        cout << "Compression Ratio: " << huffmanRatioString << ":1\n";
+
+    } catch (const exception& e) {
+        cerr << "Error processing " << filePath << ": " << e.what() << endl;
+    }
+}
+
+
 int main() {
 
 //    cout << readFileToString("../data/scientific1.txt") << endl;
@@ -25,6 +42,12 @@ int main() {
     vector<int> output_code = lzwEncode(s);
     cout << lzwCompRatio(s, output_code) << endl;
 
+    vector<string> files = {
+    "../data/scientific5.txt",
+    };
+    for (const auto& file : files) {
+        processFileHuffman(file);
+    }
 
 
 
