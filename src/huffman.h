@@ -8,6 +8,5 @@ using namespace std;
 
 string huffmanEncode(const string& text);
 double huffmanCompRatio(const string& original, const string& encoded);
-double huffmanCompRatio(const string& original, const vector<int>& encoded);
 
 #endif //PROJECT3_2_HUFFMAN_H
