@@ -12,7 +12,7 @@ struct Node{
     unique_ptr<Node> left, right;
 
     Node(char ch, int freq, unique_ptr<Node> left = nullptr, unique_ptr<Node> right = nullptr)
-            : ch(ch), freq(freq), left(move(left)), right(move(right)){}
+        : ch(ch), freq(freq), left(move(left)), right(move(right)){}
 };
 
 struct Compare{
@@ -38,7 +38,7 @@ unique_ptr<Node> buildHuffmanTree(const string& text){
     }
 
     while (pq.size() > 1){
-        auto left = move(const_cast<unique_ptr<Node>&>(pq.top()));
+        auto left = move(const_cast<unique_ptr<Node>&>(pq.top())); 
         pq.pop();
         auto right = move(const_cast<unique_ptr<Node>&>(pq.top()));
         pq.pop();
@@ -67,7 +67,7 @@ string huffmanEncode(const string& text){
     auto root = buildHuffmanTree(text);
     unordered_map<char, string> huffmanCodes;
     buildHuffmanCodes(root.get(), "", huffmanCodes);
-
+    
     string encodedText;
     for (char ch : text){
         encodedText += huffmanCodes[ch];
