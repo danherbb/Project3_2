@@ -6,6 +6,12 @@
 #include <sstream>
 using namespace std;
 
+double vecAvg(vector<double> vec) {
+    double avg = 0.0;
+    for (double d : vec) avg += d;
+    return avg / vec.size();
+}
+
 string readFileToString(const string& filePath) {
     ifstream file(filePath, ios::in | ios::binary);
     if (!file.is_open()) {
@@ -17,24 +23,35 @@ string readFileToString(const string& filePath) {
 }
 
 int main() {
+    vector<double> lzwFicRatios, hufFicRatios, lzwSciRatios, hufSciRatios;
+    string ficPath = "../data/control";
+    string sciPath = "../data/scientific";
 
-//    cout << readFileToString("../data/scientific1.txt") << endl;
+    string ogStr;
+    for (int i = 1; i <= 5; i++) {
+        ogStr = readFileToString(ficPath + to_string(i) + ".txt");
+        lzwFicRatios.push_back(lzwCompRatio(ogStr, lzwEncode(ogStr)));
+        hufFicRatios.push_back(huffmanCompRatio(ogStr, huffmanEncode(ogStr)));
 
+        ogStr = readFileToString(sciPath + to_string(i) + ".txt");
+        lzwSciRatios.push_back(lzwCompRatio(ogStr, lzwEncode(ogStr)));
+        hufSciRatios.push_back(huffmanCompRatio(ogStr, huffmanEncode(ogStr)));
+    }
 
-    string s = readFileToString("../data/scientific5.txt");
-    vector<int> output_code = lzwEncode(s);
-    cout << lzwCompRatio(s, output_code) << endl;
+    cout << "Fiction\t\tLZW\t\t\tHuffman\n";
+    cout << "---------------------------------" << endl;
+    for (int i = 0; i < 5; i++)
+        cout << "  " << i + 1 << "\t\t   " << lzwFicRatios[i] << "\t\t" << hufFicRatios[i] << endl;
+    cout << "---------------------------------\n";
+    cout << "Average:   " << vecAvg(lzwFicRatios) << "\t\t" << vecAvg(hufFicRatios) << "\n";
+    cout << "---------------------------------\n\n\n";
 
-
-
-
-
-//    cout << "Output Codes are: ";
-//    for (int i = 0; i < output_code.size(); i++) {
-//        cout << output_code[i] << " ";
-//    }
-//    cout << endl;
-//    lzwDecode(output_code);
+    cout << "Science\t\tLZW\t\t\tHuffman\n";
+    cout << "---------------------------------" << endl;
+    for (int i = 0; i < 5; i++)
+        cout << "  " << i + 1 << "\t\t   " << lzwSciRatios[i] << "\t\t" << hufSciRatios[i] << endl;
+    cout << "---------------------------------\n";
+    cout << "Average:   " << vecAvg(lzwSciRatios) << "\t\t" << vecAvg(hufSciRatios) << "\n\n";
 
     return 0;
 }
